@@ -1,0 +1,12 @@
+.home-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.home-image {
+  width: 90%;
+  max-width: 600px;
+  border-radius: 20px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
