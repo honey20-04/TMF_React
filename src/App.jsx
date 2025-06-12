@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import DeliveryForm from "./components/DeliveryForm";
 import Home from "./components/Home";
+import RestaurantList from "./components/RestaurantList"; // ✅
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -40,7 +41,6 @@ const App = () => {
     }
   };
 
-  // ✅ Checkout function
   const handleCheckout = () => {
     if (cart.length === 0) {
       alert("Your cart is empty.");
@@ -53,8 +53,8 @@ const App = () => {
     }
 
     alert("✅ Order placed successfully!");
-    setCart([]);           // Clear cart
-    setAddress("");        // Clear address
+    setCart([]);
+    setAddress("");
   };
 
   return (
@@ -62,13 +62,27 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/menu" element={<Menu addToCart={addToCart} removeFromCart={removeFromCart} cart={cart} />} />
+        <Route path="/restaurants" element={<RestaurantList />} />
+        <Route
+          path="/menu/:restaurantId"
+          element={
+            <Menu
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+              cart={cart}
+            />
+          }
+        />
         <Route
           path="/cart"
           element={
             <>
               <DeliveryForm onSubmit={setAddress} />
-              <Cart cartItems={cart} address={address} onCheckout={handleCheckout} />
+              <Cart
+                cartItems={cart}
+                address={address}
+                onCheckout={handleCheckout}
+              />
             </>
           }
         />
