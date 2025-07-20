@@ -1,15 +1,24 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import Header from "./components/Header";
 import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import DeliveryForm from "./components/DeliveryForm";
 import Home from "./components/Home";
-import RestaurantList from "./components/RestaurantList"; // ✅
+import RestaurantList from "./components/RestaurantList";
+import OrderSummary from './components/OrderSummary';
+
+// AppWrapper to use useNavigate outside Router
+const AppWrapper = () => (
+  <Router>
+    <App />
+  </Router>
+);
 
 const App = () => {
   const [cart, setCart] = useState([]);
   const [address, setAddress] = useState("");
+  const navigate = useNavigate();
 
   const addToCart = (item) => {
     const existingItem = cart.find((cartItem) => cartItem.id === item.id);
@@ -41,24 +50,34 @@ const App = () => {
     }
   };
 
-  const handleCheckout = () => {
-    if (cart.length === 0) {
+  const handleCheckout = (finalCartItems, deliveryAddress, totalPrice) => {
+    if (finalCartItems.length === 0) {
       alert("Your cart is empty.");
       return;
     }
 
-    if (!address.trim()) {
+    if (!deliveryAddress.trim()) {
       alert("Please enter your delivery address before checkout.");
       return;
     }
 
     alert("✅ Order placed successfully!");
+
+    // Navigate to order summary with order details
+    navigate("/order-summary", {
+      state: {
+        cartItems: finalCartItems,
+        address: deliveryAddress,
+        totalPrice: totalPrice,
+      },
+    });
+
     setCart([]);
     setAddress("");
   };
 
   return (
-    <Router>
+    <>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -86,9 +105,10 @@ const App = () => {
             </>
           }
         />
+        <Route path="/order-summary" element={<OrderSummary />} />
       </Routes>
-    </Router>
+    </>
   );
 };
 
-export default App;
+export default AppWrapper;

@@ -1,0 +1,80 @@
+.order-summary {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #fff7e6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 24px;
+}
+
+.summary-item {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.summary-item h4 {
+  margin-bottom: 0.3rem;
+}
+
+.free-item {
+  color: green;
+  font-weight: bold;
+  background-color: #e0ffe0;
+  padding: 2px 8px;
+  margin-left: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.savings {
+  color: #2e8b57;
+  font-weight: 500;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.restaurant-group {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.restaurant-title {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.place-order-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.place-order-btn {
+  padding: 12px 24px;
+  background-color: #ff6f00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.place-order-btn:hover {
+  background-color: #e65c00;
+}
+
+.place-order-btn:active {
+  transform: scale(0.98);
+}

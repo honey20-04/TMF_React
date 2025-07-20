@@ -1,12 +1,94 @@
 .home-container {
+  position: relative;
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 180px; /* added padding to make room for left/right ads */
+  overflow: hidden;
 }
 
 .home-image {
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 800px;
+  height: 400px;           /* Fixed height */
+  object-fit: cover;       /* Keeps the image covered nicely */
   border-radius: 20px;
   margin-top: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+.ad-left,
+.ad-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 160px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.85); /* translucent bg for better visibility */
+  padding: 10px 0;
+}
+
+.ad-left {
+  left: 0;
+}
+
+.ad-right {
+  right: 0;
+}
+
+.ad-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ad-item {
+  margin: 25px 0;
+  text-align: center;
+}
+
+.ad-item img {
+  width: 100px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  margin-bottom: 6px;
+}
+
+.ad-item p {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #e74c3c;
+  max-width: 130px;
+  line-height: 1.2;
+}
+
+.scroll-down {
+  animation: scrollDown 16s linear infinite;
+}
+
+.scroll-up {
+  animation: scrollUp 16s linear infinite;
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
 }

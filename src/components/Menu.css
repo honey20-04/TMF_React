@@ -101,3 +101,23 @@
   font-size: 14px;
   margin-left: 6px;
 }
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 8px;
+}
+
+.offer-price {
+  color: #e74c3c;
+  font-weight: bold;
+}
+.free-item {
+  color: green;
+  font-weight: bold;
+}
+
+.discount-note {
+  color: #ff6600;
+  font-style: italic;
+  font-size: 0.9em;
+}

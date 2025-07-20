@@ -9,6 +9,7 @@ const menuData = {
       name: "Paneer Butter Masala",
       price: 250,
       rating: 4.5,
+      restaurant:"Novotel",
       image: require("../assets/pannerbuttermasala.jpg"),
     },
     {
@@ -16,6 +17,7 @@ const menuData = {
       name: "Butter Naan",
       price: 40,
       rating: 4,
+      restaurant:"Novotel",
       image: require("../assets/butternaan.jpeg"),
     },
     {
@@ -23,6 +25,7 @@ const menuData = {
       name: "noodles",
       price: 300,
       rating: 3,
+      restaurant:"Novotel",
       image: require("../assets/noodles.jpeg"),
     },
     {
@@ -30,7 +33,16 @@ const menuData = {
       name: "Chicken Bone Soup",
       price: 250,
       rating: 4,
+      restaurant:"Novotel",
       image: require("../assets/chiken bone soup.jpeg"),
+    },
+    {
+      id: "rest1-5",
+      name: "Vanilla Icecream",
+      price: 100,
+      rating: 4,
+      restaurant:"Novotel",
+      image: require("../assets/vanilla.jpeg"),
     },
   ],
   Daspalla: [
@@ -61,6 +73,14 @@ const menuData = {
       price: 600,
       rating: 4,
       image: require("../assets/veg thali.jpeg"),
+    },
+    {
+      id: "rest2-5",
+      name: "Veg Manchow Soup",
+      price: 150,
+      offerPrice: 99,
+      rating: 4,
+      image: require("../assets/vegmanchowsoup.jpg"),
     },
   ],
   KFC: [
@@ -110,7 +130,7 @@ const menuData = {
     },
     {
       id: "rest4-3",
-      name: "Non Veg Loaded",
+      name: "Non Veg Loaded Pizza",
       price: 205,
       rating: 4.5,
       image: require("../assets/loaded.jpeg"),
@@ -140,14 +160,14 @@ const menuData = {
     },
     {
       id: "rest5-3",
-      name: "Chilli Paneer Sizzle",
+      name: "Chilli Paneer Sizzle Pizza",
       price: 200,
       rating: 3.9,
       image: require("../assets/chilli.jpeg"),
     },
     {
       id: "rest5-4",
-      name: "Tandoori Paneer",
+      name: "Tandoori Paneer Pizza",
       price: 319,
       rating: 4.9,
       image: require("../assets/tandoori.jpeg"),
@@ -212,6 +232,14 @@ const menuData = {
       rating: 4.8,
       image: require("../assets/tikka.jpeg"),
     },
+    {
+      id: "rest7-5",
+      name: "Chicken Lollipop",
+      price: 280,
+      offerPrice:149,
+      rating: 4.8,
+      image: require("../assets/chickenlollipop.jpeg"),
+    },
   ],
   HabitatCafe: [
     {
@@ -243,6 +271,36 @@ const menuData = {
       image: require("../assets/flat.jpeg"),
     },
   ],
+  Koreanstreetfood: [
+    {
+      id: "rest9-1",
+      name: "Chicken Ramen",
+      price: 350,
+      rating: 4.7,
+      image: require("../assets/chickenramen.jpg"),
+    },
+    {
+      id: "rest9-2",
+      name: "Veg Ramen",
+      price: 320,
+      rating: 4.4,
+      image: require("../assets/vegramen.jpg"),
+    },
+    {
+      id: "rest9-3",
+      name: "Bibimbap",
+      price: 380,
+      rating: 4.6,
+      image: require("../assets/bibimbap.jpg"),
+    },
+    {
+      id: "rest9-4",
+      name: "Kimchi",
+      price: 100,
+      rating: 4.2,
+      image: require("../assets/kimchi.jpg"),
+    },
+  ],
 };
 
 const Menu = ({ addToCart, removeFromCart, cart }) => {
@@ -263,7 +321,17 @@ const Menu = ({ addToCart, removeFromCart, cart }) => {
               <div className="menu-card" key={item.id}>
                 <img src={item.image} alt={item.name} className="menu-image" />
                 <h3>{item.name}</h3>
-                <p>₹{item.price}</p>
+                <p>
+                  {item.offerPrice ? (
+                    <>
+                      <span className="original-price">₹{item.price}</span>{" "}
+                      <span className="offer-price">₹{item.offerPrice}</span>
+                    </>
+                  ) : (
+                    <>₹{item.price}</>
+                  )}
+                </p>
+
                 <div className="rating-stars">
                   {"★".repeat(Math.floor(item.rating))}
                   {"☆".repeat(5 - Math.floor(item.rating))}
